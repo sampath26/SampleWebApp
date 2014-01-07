@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+	<bean id="registerService" class="com.vin.web.impls.RegisterServiceImpl">
+		<property name="registerServiceDAO" ref="registerServiceDAO"/>
+	</bean>
+ 
+	<bean id="sampleAction" class="com.vin.web.action.SampleAction">
+		<property name="registerService" ref="registerService" />	
+	</bean>
+	
+	<bean id="sessionFactory" class="com.vin.web.impls.DBUtil" factory-method="buildSessionFactory"/>
+	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="registerServiceDAO" class="com.vin.web.impls.RegisterServiceDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"/>
+<!-- 		<property name="sessionFactory" ref="sessionFactory"/>	 -->
+	</bean>
+ 
+</beans>
