@@ -19,8 +19,8 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 	</bean>
 	
 	<bean id="registerServiceDAO" class="com.vin.web.impls.RegisterServiceDAOImpl">
-		<property name="hibernateTemplate" ref="hibernateTemplate"/>
-<!-- 		<property name="sessionFactory" ref="sessionFactory"/>	 -->
+<!-- 		<property name="hibernateTemplate" ref="hibernateTemplate"/> -->
+		<property name="sessionFactory" ref="sessionFactory"/>	
 	</bean>
  
 </beans>
